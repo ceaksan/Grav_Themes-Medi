@@ -1,0 +1,56 @@
+title: Doctors
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/doctors
+                      "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+            overrides:
+              fields:
+                header.template:
+                  default: modular/doctors
+                  "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+        doctors:
+          type: tab
+          title: Doctors
+          limit: 3
+          fields:
+            header.doctors:
+              name: doctors
+              type: list
+              label: Sections
+              fields:
+                .who:
+                  type: text
+                  label: Name &amp; Surname
+                .specialty:
+                  type: text
+                  label: Specialty
+                .custom_file:
+                  type: file
+                  label: Image
+                  destination: "self@"
+                  multiple: false
+                  random_name: false
+                  limit: 1
+                  filesize: 5
+                  accept:
+                    - image/*
+                .facebook:
+                  type: text
+                  label: Facebook Profile
+                .twitter:
+                  type: text
+                  label: Twitter Profile
+                .linkedin:
+                  type: text
+                  label: Linkedin Profile

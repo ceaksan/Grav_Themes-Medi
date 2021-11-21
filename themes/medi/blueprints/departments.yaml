@@ -1,0 +1,16 @@
+title: Departments
+"@extends":
+    type: default
+    context: blueprints://pages/departments
+    default: departments
+    "@data-options": '\Grav\Common\Page\Pages'
+
+form:
+  fields:
+    header.an_example_text_field:
+        type: text
+        label: Add a number
+        default: 5
+        validate:
+        required: true
+        type: int

@@ -1,0 +1,30 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': page.title } %}
+
+    {% set collection = page.collection() %}
+
+    {% block body_content %}
+    
+	<!-- Start Sample Area -->
+	<section class="sample-text-area mb-20px" id="{{ page.slug }}">
+		
+		<div class="container box_1170">
+			    {% if config.plugins.breadcrumbs.enabled %}
+      {% include 'partials/breadcrumbs.html.twig' %}
+		{% endif %}
+		
+            {#<h3 class="text-heading">{{ page.title }}</h3>#}
+			<p class="sample-text">{{ page.content|raw }}</p>
+		</div>
+	</section>
+
+	<!-- End Sample Area -->
+
+    {% endblock %}
+
+    {% include 'partials/footer.html.twig' ignore missing %}
+    {% include 'forms/form.html.twig' ignore missing %}
+    
+{% endblock %}

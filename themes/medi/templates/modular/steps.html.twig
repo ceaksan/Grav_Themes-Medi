@@ -1,0 +1,25 @@
+<div class="quality_area pt-0">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6">
+                    <div class="section_title mb-55 text-center">
+                        <h3>{{ page.title }}</h3>
+                        <p>{{ content|raw }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            {% for step in page.header.steps %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_quality">
+                        <div class="icon">
+                            <i class="{{ step.icon }}"></i>
+                        </div>
+                        <h3>{{ step.title }}</h3>
+                        <p>{{ step.description|raw }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>

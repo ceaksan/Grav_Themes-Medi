@@ -1,0 +1,40 @@
+title: Steps
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/steps
+                      "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+            overrides:
+              fields:
+                header.template:
+                  default: modular/steps
+                  "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+        steps:
+          type: tab
+          title: Steps
+          limit: 3
+          fields:
+            header.steps:
+              name: steps
+              type: list
+              label: Steps
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .icon:
+                  type: text
+                  label: Icon
+                .description:
+                  type: text
+                  label: Description

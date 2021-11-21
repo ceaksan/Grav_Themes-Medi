@@ -1,0 +1,36 @@
+    <!-- expert_doctors_area_start -->
+    <div class="expert_doctors_area {{ class }}">
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-lg-6">
+                    <div class="section_title mb-55 text-center">
+                        <h3>{{ page.title }}</h3>
+                        <p>{{ content|raw }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                {% for doc in page.header.doctors %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_expert">
+                        <div class="expert_thumb">
+                            <img src="{{ doc.custom_file|first.path }}" alt="{{ doc.who }}" />
+                        </div>
+                        <div class="experts_name text-center">
+                            <h3>{{ doc.who }}</h3>
+                            <span>{{ doc.specialty }}</span>
+                            <div class="social_links">
+                                <ul>
+                                    {% if doc.facebook is not empty %}<li><a href="{{ doc.facebook }}"> <i class="fa fa-facebook"></i> </a></li>{% endif %}
+                                    {% if doc.linkedin is not empty %}<li><a href="{{ doc.linkedin }}"> <i class="fa fa-linkedin"></i> </a></li>{% endif %}
+                                    {% if doc.twitter is not empty %}<li><a href="{{ doc.twitter }}"> <i class="fa fa-twitter"></i> </a></li>{% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- expert_doctors_area_end -->

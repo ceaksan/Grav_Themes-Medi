@@ -1,0 +1,59 @@
+<div class="depertment_area">
+        <div class="container">
+            <div class="row custom_align align-items-end justify-content-between">
+                <div class="col-lg-6">
+                    <div class="section_title">
+                        <h3>{{ page.title }}</h3>
+                        <p>{{ content|raw }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="learn_more_btn text-right">
+                        {% for btn in page.header.buttons %}
+                        <a href="{{ btn.buttonurl }}" title="{{ btn.buttontext }}" class="boxed-btn">{{ btn.buttontext }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="depart_ment_tab mb-30">
+                        <ul class="nav" id="myTab" role="tablist">
+                         {% for section in page.header.departments %}
+                         {% set sName = section.header|replace({' ': '-'})|lower %}
+                            <li class="nav-item">
+                                <a class="nav-link{% if loop.first %} active{% endif %}" id="{{ sName }}-tab" data-toggle="tab" href="#{{ sName }}" role="tab" aria-controls="{{ sName }}" aria-selected="true"><i class="{{ section.icon }}"></i> <h4>{{ section.header }}</h4></a>
+                            </li>
+                         {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="dept_main_info white-bg">
+                <div class="tab-content" id="myTabContent">
+                    {% for section in page.header.departments %}
+                    {% set sName = section.header|replace({' ': '-'})|lower %}
+                    <div class="tab-pane fade{% if loop.first %} show active {% endif %}" id="{{ sName }}" role="tabpanel" aria-labelledby="{{ sName }}-tab">
+                        <!-- single_content  -->
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <div class="dept_thumb">
+                                    <img src="{{ section.custom_file|first.path }}" alt="{{ section.header }}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="dept_info">
+                                    <h3>{{ section.header|title }}</h3>
+                                    <p>{{ section.description|raw }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single_content  -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>

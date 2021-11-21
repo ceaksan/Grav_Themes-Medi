@@ -1,0 +1,23 @@
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                {% if p.media.images %}
+                                {% set thumbUrl = p.media.images|first.quality(80).cropZoom(800,450).url %}
+                                <a href="{{p.url}}" title="{{ p.title }}"><img class="card-img rounded-0" src="{{ thumbUrl }}" alt="{{ p.title }}" /></a>
+                                {% endif %}
+                                
+                                <div class="blog_item_date" title="{{ p.title }}">
+                                    <h3>{{ p.date|date("j")}}</h3>
+                                    <p>{{ p.date|date("M")}}</p>
+                                </div>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="{{p.url}}" title="{{ p.title }}"><h2>{{ p.title }}</h2></a>
+                                <p>{{ p.summary|raw }}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i> {% for cat in p.taxonomy.tag %}
+                                    <a href="{{ base_url }}/tag:{{ cat }}" title="{{ cat }}">{{ cat }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</a></li>
+                                    {# <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li> #}
+                                </ul>
+                            </div>
+                        </article>

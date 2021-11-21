@@ -1,0 +1,37 @@
+<div class="blog_right_sidebar">
+
+{% set new_base_url = page.url == '/' ? '' : page.url %}
+
+<aside class="single_sidebar_widget post_category_widget">
+{% if config.plugins.simplesearch.enabled %}
+    <div class="widget HTML">
+        <h4 class="widget_title">SimpleSearch</h4>
+        <div class="widget-content simplesearch">
+            {% include 'partials/simplesearch_searchbox.html.twig' %}
+        </div>
+    </div>
+{% endif %}
+</aside>
+{% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">{{ 'RELATED_POSTS'|t }}</h4>
+        {% include 'partials/relatedpages.html.twig' %}
+    </aside>
+{% endif %}
+
+{% if config.plugins.archives.enabled %}
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">{{ 'ARCHIVES'|t }}</h4>
+        {% include 'partials/archives.html.twig' %}
+    </aside>
+{% endif %}
+
+{#
+{% if config.plugins.taxonomylist.enabled %}
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">{{ 'POPULAR_TAGS'|t }}</h4>
+        {% include 'partials/taxonomylist.html.twig' with {'taxonomy':'tag'} %}
+    </aside>
+{% endif %}
+#}
+</div>

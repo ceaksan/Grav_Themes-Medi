@@ -1,0 +1,70 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': page.title } %}
+
+    {% set collection = page.collection() %}
+
+    {% block body_content %}
+
+    <!-- Start Sample Area -->
+    <section class="blog_area single-post-area section-padding" id="{{ page.slug }}">
+		<div class="container">
+			    {% if config.plugins.breadcrumbs.enabled %}
+      {% include 'partials/breadcrumbs.html.twig' %}
+		{% endif %}
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="feature-img">
+                        {% if page.media.images %}
+                                {% set thumbUrl = page.media.images|first.quality(90).cropZoom(1300,730).url %}
+                                <img class="img-fluid rounded-0" src="{{ thumbUrl }}" alt="{{ page.title }}" />
+                                {% endif %}
+                    </div>
+                    <div class="blog_details">
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="fa fa-user"></i> {% for cat in page.taxonomy.tag %}
+<a href="{{ base_url }}/blog/tag:{{ cat }}" title="{{ cat }}">{{ cat }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</a></li>
+                        </ul>
+                        <p>{{ page.content|raw }}</p>
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                        {% if show_prev_next %}
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                {% if not page.isLast %}
+                                    <a class="button" href="{{ page.prevSibling.url }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ 'GANTRY5_ENGINE_BLOG_ITEM_PREV_POST'|trans }}</a>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                {% if not page.isFirst %}
+                                    <a class="button" href="{{ page.nextSibling.url }}">{{ 'GANTRY5_ENGINE_BLOG_ITEM_NEXT_POST'|trans }} <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                {% endif %}
+                            </div>
+                        {% endif %} 
+                    </div>
+                </div>
+            </div>
+            <div class="blog-author">
+                  <div class="media align-items-center">
+                    {#include 'partials/aboutme.html.twig' #}
+                  </div>
+               </div>
+               {% include 'partials/comments.html.twig' %}
+            </div>
+            <div class="col-lg-4">
+                {% include 'partials/sidebar.html.twig' %}
+            </div>
+         </div>
+      </div>
+	</section>
+	<!-- End Sample Area -->
+
+
+    {% endblock %}
+
+    {% include 'partials/footer.html.twig' ignore missing %}
+    {% include 'forms/form.html.twig' ignore missing %}
+    
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %} {# Builds on the base.html.twig template #}
+
+{% block body %}
+    {% for module in page.collection() %}
+        <div id="{{ module.header.anchor }}"></div> {# pulls info from section.md yaml #}
+        {{ module.content|raw }}
+    {% endfor %}
+
+{% include 'partials/book.html.twig' %}
+{% include 'partials/contact.html.twig' %}
+{% include 'forms/form.html.twig' %}
+{% include 'partials/footer.html.twig' %}
+
+{% endblock %}
+

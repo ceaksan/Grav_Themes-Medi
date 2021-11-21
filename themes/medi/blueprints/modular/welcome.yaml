@@ -1,0 +1,36 @@
+title: Welcome
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/welcome
+                      "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+            overrides:
+              fields:
+                header.template:
+                  default: modular/welcome
+                  "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+        welcome:
+          type: tab
+          title: Buttons
+          fields:
+            header.welcome:
+              name: welcome
+              type: list
+              label: Buttons
+              fields:
+                .buttontext:
+                  type: text
+                  label: Text
+                .buttonurl:
+                  type: text
+                  label: URL

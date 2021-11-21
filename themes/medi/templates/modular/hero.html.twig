@@ -1,0 +1,19 @@
+<!-- slider_area_start -->
+<div class="slider_area">
+{% set image = page.media.images|first %}
+<div class="single_slider d-flex align-items-center overlay" style="background-image: url('{{ image.url }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="slider_text">
+                    <span>{{ page.title|raw }}</span>
+                    {{ content|raw }}
+                    {% for hero in page.header.hero %}
+                        <a href="{{ hero.buttonurl }}" title="{{ hero.buttontext }}" class="boxed-btn5">{{ hero.buttontext }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

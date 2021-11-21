@@ -1,0 +1,44 @@
+{% extends 'partials/base.html.twig' %}
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': "PLUGIN_SIMPLESEARCH.SEARCH_RESULTS"|t } %}
+{% include 'partials/simplesearch_base.html.twig' %}
+{% block body_content %}
+<!--================Blog Area =================-->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        
+                        {% include 'partials/simplesearch_searchbox.html.twig' %}
+                        {% if query %}
+                            {% set count = search_results ? search_results.count : 0 %}
+                            <div class="search_query_info">
+                            {% if count is same as(1) %}
+                                {{ "PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_SINGULAR"|t(query|e)|raw }}
+                            {% else %}
+                                {{ "PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_PLURAL"|t(query|e, count)|raw }}
+                            {% endif %}
+                            </div>
+                        {% endif %}
+
+        {% for page in search_results %}
+            {% include 'partials/simplesearch_item.html.twig' with {'page':page, 'truncate':true} %}
+        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                {% include 'partials/sidebar.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+    {% endblock %}
+
+    {% include 'partials/contact.html.twig' ignore missing %}
+    {% include 'partials/footer.html.twig' ignore missing %}
+    {% include 'forms/form.html.twig' ignore missing %}
+
+{% endblock %}

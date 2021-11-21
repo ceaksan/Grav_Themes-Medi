@@ -1,0 +1,70 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': page.title } %}
+
+    {% set collection = page.collection() %}
+
+    {% block body_content %}
+    
+    {% set blog_image = page.media.images|first %}
+	<!-- Start Sample Area -->
+	<section class="sample-text-area mb-20px" id="{{ page.slug }}">
+		<div class="container box_1170">
+            <h3 class="text-heading">{{ page.title }}</h3>
+            <p>{{ blog_image.url }}</p>
+			<p class="sample-text">{{ page.content }}</p>
+		</div>
+	</section>
+    <!-- End Sample Area -->
+    
+<!-- ================ contact section start ================= -->
+    <section class="contact-section pt-20px">
+        <div class="container">
+            <div class="d-none d-sm-block mb-5 pb-4">
+                <h3 class="text-heading">Location</h3>
+                {% include 'partials/map.html.twig' ignore missing %}
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Get in Touch</h2>
+                </div>
+                <div class="col-lg-8">
+                    {% include 'forms/contact-form.html.twig' ignore missing %}
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Buttonwood, California.</h3>
+                            <p>Rosemead, CA 91770</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>+1 253 565 2365</h3>
+                            <p>Mon to Fri 9am to 6pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3>support@colorlib.com</h3>
+                            <p>Send us your query anytime!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ contact section end ================= -->
+
+    {% endblock %}
+
+    {% include 'partials/footer.html.twig' ignore missing %}
+    {% include 'forms/form.html.twig' ignore missing %}
+    
+{% endblock %}

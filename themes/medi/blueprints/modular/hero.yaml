@@ -1,0 +1,36 @@
+title: Hero
+"@extends": default
+
+form:
+  fields:
+    tabs:
+      fields:
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/hero
+                      "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+            overrides:
+              fields:
+                header.template:
+                  default: modular/hero
+                  "@data-options": '\Grav\Common\Page\Pages::modularTypes'
+        hero:
+          type: tab
+          title: Buttons
+          fields:
+            header.hero:
+              name: hero
+              type: list
+              label: Buttons
+              fields:
+                .buttontext:
+                  type: text
+                  label: Text
+                .buttonurl:
+                  type: text
+                  label: URL

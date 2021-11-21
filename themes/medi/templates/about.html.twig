@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': page.title } %}
+<div class="depertment_area">
+    <div class="container dept_main_info">
+    {% block body_content %}
+        {% if config.plugins.breadcrumbs.enabled %}
+            {% include 'partials/breadcrumbs.html.twig' %}
+        {% endif %}
+        {% include 'modular/welcome.html.twig' ignore missing with {'class': 'pt-5 pb-5' } %}
+    {% endblock %}
+    </div>
+</div>
+{% include 'partials/contact.html.twig' ignore missing %}
+{% include 'partials/footer.html.twig' ignore missing %}
+{% include 'forms/form.html.twig' ignore missing %}
+    
+{% endblock %}

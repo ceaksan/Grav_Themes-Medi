@@ -1,0 +1,47 @@
+enabled: true
+default_lang: en
+cdn: false
+logo_url: null
+favicon_url: null
+dropdown:
+  enabled: true
+buttons:
+  cta: 'Book Appointment'
+contact:
+  email:
+    text: 'We are here for you'
+    mail: mail@mail.com
+  telephone:
+    title: 'Emergency Medical Care'
+    phone: '+1-465 4545'
+footer:
+  description: 'Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit, sed do<br />eiusmod tempor incididunt ut labore.'
+  copy: 'All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>'
+  widget_1:
+    title: 'Our Departments'
+    list:
+      Births: '#'
+      Cardiology: '#'
+      Traumatology: '#'
+      Nuclear: '#'
+      Pregnancy: '#'
+      X-ray: '#'
+      Pulmonary: '#'
+      Neurology: '#'
+  widget_2:
+    title: 'We''re Available'
+    list:
+      'Monday - Friday': '8.00 - 18.00'
+      Saturday: '8.00 - 18.00'
+      Sunday: '8.00 - 13.00'
+social:
+  facebook: ''
+  twitter: 'https://twitter.com/medi'
+  instagram: 'https://instagram.com/medi'
+  linkedin: 'https://linkedin.com/medi'
+simplesearch:
+  route: /search
+  template: simplesearch_results
+  filters:
+    category: blog
+  filter_combinator: and

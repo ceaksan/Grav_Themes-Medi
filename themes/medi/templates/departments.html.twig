@@ -1,0 +1,59 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+{% include 'partials/bradcam.html.twig' ignore missing with {'title': page.title } %}
+
+    {% set collection = page.collection() %}
+
+    {% block body_content %}
+    <div class="depertment_area">
+        <div class="container dept_main_info">
+{% set options = { items: {'@page.children': '/'~page.slug}, 'limit': 6, 'order': {'by': 'date', 'dir': 'desc'}, 'pagination': true } %}
+  {% set collection = page.collection(options) %}
+  {% set base_url = page.url %}
+  {% set feed_url = base_url %}
+
+  {% if base_url == '/' %}
+    {% set base_url = '' %}
+  {% endif %}
+
+  {% if base_url == base_url_relative %}
+    {% set feed_url = base_url~'/'~page.slug %}
+  {% endif  %}
+
+      {% if config.plugins.breadcrumbs.enabled %}
+      {% include 'partials/breadcrumbs.html.twig' %}
+    {% endif %}
+
+{% for p in collection %}
+            <div class="row align-items-center bg-white mb-65">
+                <div class="col-lg-5 px-0">
+                    <div class="dept_thumb">
+                        {% if p.media.images %}
+                         {% set thumbUrl = p.media.images|first.url %}
+                        <a href="{{p.url}}" title="{{ p.title }}"><img src="{{ thumbUrl }}" alt="{{ p.title }}" /></a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="dept_info">
+                        <h2 class="section_title mt-5 mb-2"><a href="{{p.url}}">{{ p.title }}</a></h2>
+                        <p>{{ p.summary|raw }}</p>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+
+    {% if config.plugins.pagination.enabled and collection.params.pagination %}
+      {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+    {% endif %}
+
+        </div>
+    </div>
+    {% endblock %}
+
+    {% include 'partials/contact.html.twig' ignore missing %}
+    {% include 'partials/footer.html.twig' ignore missing %}
+    {% include 'forms/form.html.twig' ignore missing %}
+    
+{% endblock %}

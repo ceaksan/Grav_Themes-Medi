@@ -1,0 +1,48 @@
+name: Medi
+version: 1.0.0
+description: "A simple one page theme for Grav"
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      help: THEMES.MEDI.PLUGIN_STATUS_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    cdn:
+      type: toggle
+      label: THEMES.MEDI.CDN
+      help: THEMES.MEDI.CDN_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    logo_url:
+      type: text
+      label: THEMES.MEDI.LOGO_URL
+      placeholder: THEMES.MEDI.LOGO_URL_PLACEHOLDER
+
+    favicon_url:
+      type: text
+      label: THEMES.MEDI.FAVICON_URL
+      placeholder: THEMES.MEDI.FAVICON_URL_PLACEHOLDER
+
+simplesearch:
+  route: /search
+  template: simplesearch_results
+  filters:
+    category: blog
+  filter_combinator: and

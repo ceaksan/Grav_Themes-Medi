@@ -1,0 +1,26 @@
+state: enabled
+email: c.aksan@gmail.com
+fullname: 'Ceyhun Aksan'
+title: Administrator
+language: en
+content_editor: default
+twofa_enabled: false
+twofa_secret: 65HGEAXLST3U546UUJ763ELF73ROCNQK
+avatar: {  }
+hashed_password: $2y$10$OHUK.0apZPoNcPLHLDkLG.9g5yyX7VEAAQP1TgPscDFW6SZPXDFpm
+access:
+  site:
+    login: true
+  admin:
+    login: true
+    super: true
+    cache: true
+    configuration: true
+    pages: true
+    maintenance: true
+    statistics: true
+    plugins: true
+    themes: true
+    tools: true
+    users: true
+    flex-objects: true
